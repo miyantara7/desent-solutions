@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/miyantara7/desent-solutions/internal/container"
@@ -16,7 +17,12 @@ func main() {
 
 	r := ctn.Get(container.ContainerRouter).(*gin.Engine)
 
-	if err := r.Run(":8080"); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	if err := r.Run(":" + port); err != nil {
 		log.Fatal(err)
 	}
 }
