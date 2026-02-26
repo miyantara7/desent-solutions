@@ -97,8 +97,6 @@ func (h *SpeedrunHandler) Run(c *gin.Context) {
 	listResp, _ := h.client.Get(baseURL + "/books")
 	result["list_books"] = decodeBody(listResp)
 
-	// 4. GET BY ID
-	// ======================
 	getResp, _ := h.client.Get(baseURL + "/books/" + bookID)
 	result["get_book"] = decodeBody(getResp)
 
