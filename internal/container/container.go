@@ -11,10 +11,11 @@ import (
 )
 
 const (
-	ContainerRepository = "book-repository"
-	ContainerUsecase    = "book-usecase"
-	ContainerHandler    = "book-handler"
-	ContainerRouter     = "router"
+	ContainerRepository      = "book-repository"
+	ContainerUsecase         = "book-usecase"
+	ContainerHandler         = "book-handler"
+	ContainerRouter          = "router"
+	ContainerSpeedrunHandler = "speedrun-handler"
 )
 
 func Build() (ctn di.Container, err error) {
@@ -47,19 +48,29 @@ func Build() (ctn di.Container, err error) {
 	})
 
 	builder.Add(di.Def{
+		Name: ContainerSpeedrunHandler,
+		Build: func(ctn di.Container) (interface{}, error) {
+			return handler.NewSpeedrunHandler(), nil
+		},
+	})
+
+	builder.Add(di.Def{
 		Name: ContainerRouter,
 		Build: func(ctn di.Container) (interface{}, error) {
 
 			bookHandler := ctn.Get(ContainerHandler).(*handler.BookHandler)
+			speedrunHandler := ctn.Get(ContainerSpeedrunHandler).(*handler.SpeedrunHandler)
 
 			bookRoute := router.NewBookRoute(bookHandler)
 			authRoute := router.NewAuthRoute(bookHandler)
+			speedrunRoute := router.NewSpeedRunRoute(speedrunHandler)
 			healthRoute := router.NewHealthRoute()
 
 			return router.SetupRouter(
 				bookRoute,
 				authRoute,
 				healthRoute,
+				speedrunRoute,
 			), nil
 		},
 	})
