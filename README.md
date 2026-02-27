@@ -1,6 +1,6 @@
 # Desent Solutions API
 
-Production-ready REST API built with **Golang + Gin**.
+REST API built with **Golang**.
 
 ## Quick Start (Local)
 
