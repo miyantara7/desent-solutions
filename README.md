@@ -1,22 +1,22 @@
-# 🚀 Desent Solutions API
+# Desent Solutions API
 
 Production-ready REST API built with **Golang + Gin + Clean Architecture + DI (sarulabs/di)**.
 
-## 🚀 Quick Start (Local)
+## Quick Start (Local)
 
-### 1️⃣ Install deps
+### Install deps
 
 ```bash
 go mod tidy
 ```
 
-### 2️⃣ Run app
+### Run app
 
 ```bash
 make run
 ```
 
-### 3️⃣ Test
+### Test
 
 ```bash
 curl http://localhost:8080/ping
@@ -24,7 +24,7 @@ curl http://localhost:8080/ping
 
 ---
 
-## 🐳 Run with Docker
+## Run with Docker
 
 ### Build image
 
@@ -46,7 +46,7 @@ curl http://localhost:8080/ping
 
 ---
 
-## 🧪 Run Speed Test (Local)
+## Run Speed Test (Local)
 
 ```bash
 make speedrun
@@ -62,7 +62,7 @@ curl -X POST https://desent-solutions-production.up.railway.app/speedrun
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Health
 
@@ -96,7 +96,7 @@ POST /speedrun
 
 ---
 
-## 🧪 Example cURL
+## Example cURL
 
 ### Create Book
 
@@ -115,7 +115,7 @@ curl -X GET https://desent-solutions-production.up.railway.app/protected/books \
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 Miyaantara.
 
